@@ -10,7 +10,7 @@ class Home extends Component {
             results.map(result => {
                 return (
                     <div className="result card" key={result.id}>
-                        <h1>{result.id}</h1>
+                        <h1>{result.title}</h1>
                         <p>{result.body}</p>
                         <Link to={'/results/' + result.id}><button>Click Here!</button></Link>
                     </div>
@@ -18,7 +18,7 @@ class Home extends Component {
             })
         ) : (
             <div className="center">
-                No posts yet
+                Start typing to search!
             </div>
         )
         return (
