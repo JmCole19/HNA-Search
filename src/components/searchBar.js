@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { search } from '../actions/searchAction';
+import { Field, reduxForm } from 'redux-form';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { SEARCH } from '../actions/searchAction';
 
 class SearchBar extends Component {
+
+    renderInput(field) {
+        return <input type="text" placeholder="Search" />
+    }
+
     render() {
-        const { search, value } = this.props;
+
+        const { handleSubmit } = this.props
 
         return (
-            <input
-                className="form-control"
-                placeholder="Search"
-                onChange={(e) => search(e.target.value)}
-                value={value} />
-        );
+            <form>
+                <Field name="query" component={this.renderInput}/>
+            </form>
+        )
     }
 }
 
-function mapStateToProps({ results }) {
-    return { value: results.value };
-}
+SearchBar = reduxForm({
+    form: 'searchBar'
+})(SearchBar);
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ search }, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default SearchBar;
