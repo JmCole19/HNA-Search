@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 
 class DataContainer extends Component {
 
+    //the Handle search results function displays results from the most recently searched item
+
     handleSearchResults = () => {
         if (this.props.length === 0) {
             return (
@@ -13,7 +15,6 @@ class DataContainer extends Component {
             )
         } else {
             const { results } = this.props;
-            console.log(this.props)
             return (
                 <div>
                     <h1>Posts</h1>
@@ -26,7 +27,7 @@ class DataContainer extends Component {
                                     <Card.Text>
                                         {result.body}
                                     </Card.Text>
-                                    <Button variant="primary" href={result.url}>See Article</Button>
+                                    <Button variant="success" href={result.url}>See Article</Button>
                                 </Card.Body>
                             </Card>
                             {'\n'}

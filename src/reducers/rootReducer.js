@@ -5,6 +5,9 @@ import {
     NEW_SEARCH
 } from "../actions/types";
 
+//Applications reducer, handles the data pulled from the API and maps it to its respective array
+
+//defines initial state
 const initState = {
     loading: false,
     posts: [],
@@ -23,7 +26,7 @@ const reducer = (state = initState, action) => {
             return {
                 loading: false,
                 posts: action.payload.hits,
-                history: [...state.history, action.terms],
+                history: [...state.history],
                 error: ''
             }
         case FETCH_DATA_FAILURE:
